@@ -62,4 +62,30 @@ item.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answe
 function updateTimer(){$('timer').textContent='⏱ '+timeLeft+'s';$('timer').style.color=timeLeft<=5?'var(--red)':'var(--text)';}
 function choose(choice){if(answered)return;answered=true;clearInterval(timerId);let item=bank[level][index],buttons=[...document.querySelectorAll('.answer')];buttons.forEach((b,i)=>{b.disabled=true;if(i===item.c)b.classList.add('correct');if(i===choice&&choice!==item.c)b.classList.add('wrong')});let good=choice===item.c;if(good){score++;beep(820,.17,'triangle')}else beep(180,.25,'sawtooth',.025);let f=$('feedback');f.className='feedback show '+(good?'good':'bad');f.textContent=(good?'✓ Tepat! ':'✕ Belum tepat. ')+(choice===-1?'Masa tamat. ':'')+item.e;$('scoreLive').textContent='Skor: '+score;$('nextBtn').disabled=false;$('progressBar').style.width=((index+1)/bank[level].length*100)+'%'}
 $('nextBtn').onclick=()=>{if(!answered)return;if(index<bank[level].length-1){index++;renderQuestion()}else finish()};
-function finish(){clearInterval(timerId);let earned=score*100;xp+=earned;localStorage.setItem('mechaXP',xp);if(score>best){best=score;localStorage.setItem('mechaBest',best)}$('totalXp').textContent=xp+' XP';$('bestScore').textContent=best+'/5';$('quizContent').classList.add('hidden');$('result').classList.remove('hidden');$('resultScore').textContent=score+'/5';$('resultTitle').textContent=score===5?'Sempurna, jurutera!':score>=3?'Bagus! Terus tingkatkan.':'Terus berlatih!';$('resultIcon').textContent=score===5?'🏆':score>=3?'⚡':'🛠️';$('resultDesc').textContent=`Anda memperoleh ${earned} XP. ${score>=4?'Penguasaan yang mantap!': 'Semak penerangan jawapan dan cuba lagi untuk tingkatkan sko
+function finish(){
+  clearInterval(timerId);
+  let earned = score * 100;
+  xp += earned;
+  localStorage.setItem('mechaXP', xp);
+  if(score > best){
+    best = score;
+    localStorage.setItem('mechaBest', best);
+  }
+  $('totalXp').textContent = xp + ' XP';$('bestScore').textContent = best + '/5';
+  $('quizContent').classList.add('hidden');$('result').classList.remove('hidden');
+  $('resultScore').textContent = score + '/5';$('resultTitle').textContent = score === 5 ? 'Sempurna, jurutera!' : score >= 3 ? 'Bagus! Terus tingkatkan.' : 'Terus berlatih!';
+  $('resultIcon').textContent = score === 5 ? '🏆' : score >= 3 ? '⚡' : '🛠️';
+  $('resultDesc').textContent = `Anda memperoleh ${earned} XP. ${score >= 4 ? 'Penguasaan yang mantap!' : 'Semak penerangan jawapan dan cuba lagi untuk tingkatkan skor.'}`;
+}
+
+$('retryBtn').onclick = () => startQuiz(level);
+
+function toast(msg) {
+  let t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
