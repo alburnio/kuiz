@@ -3,403 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Misi Angkasa Matematik - Darjah 3 (9 Tahun)</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-<meta property="og:title" content="Misi Angkasa Matematik - Darjah 3 (9 Tahun)">
-<meta property="og:description" content="Jom teroka angkasa sambil belajar Sifir, Bahagi, Pecahan & Wang bersama Robo-Bot!">
-<meta property="og:type" content="website">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Mechatronics Quiz Arena</title>
 <style>
-  body {
-    font-family: 'Fredoka', cursive, sans-serif;
-    background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
-    min-height: 100vh;
-    overflow-x: hidden;
-    touch-action: manipulation;
-  }
-
-  /* Starfield animation */
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 2s infinite ease-in-out alternate;
-  }
-  @keyframes twinkle {
-    0% { opacity: 0.2; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1.2); }
-  }
-
-  /* Floating animations */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(2deg); }
-  }
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.5); }
-    50% { box-shadow: 0 0 30px rgba(236, 72, 153, 0.8); }
-  }
-  .cosmic-card {
-    background: rgba(30, 27, 75, 0.85);
-    backdrop-filter: blur(12px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    animation: pulseGlow 4s infinite;
-  }
-
-  .bouncy-btn {
-    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s;
-  }
-  .bouncy-btn:active {
-    transform: scale(0.92);
-  }
+:root{--bg:#070b14;--panel:#101827;--panel2:#151f32;--cyan:#31e8ff;--violet:#a66bff;--green:#45f5a6;--red:#ff5478;--text:#edf5ff;--muted:#91a4bf}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#132c49 0,transparent 38%),radial-gradient(ellipse at 100% 25%,#251542 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:linear-gradient(#31506d 1px,transparent 1px),linear-gradient(90deg,#31506d 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+.wrap{width:min(1100px,92vw);margin:auto;padding:28px 0 50px;position:relative}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:55px}.brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:.04em}.logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#06101a;font-size:22px;box-shadow:0 0 26px #31e8ff40}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.22em;margin-top:3px}.top-actions{display:flex;gap:9px;flex-wrap:wrap}.pill,.btn{border:1px solid #33435b;background:#101827;color:var(--text);border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;transition:.2s}.pill:hover,.btn:hover{border-color:var(--cyan);transform:translateY(-2px)}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:25px;align-items:center;margin-bottom:32px}.eyebrow{color:var(--cyan);letter-spacing:.22em;font-size:12px;font-weight:800}.hero h1{font-size:clamp(36px,6vw,68px);line-height:.99;letter-spacing:-.055em;margin:15px 0}.hero h1 span{background:linear-gradient(90deg,var(--cyan),#a5b8ff,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:16px;line-height:1.7;max-width:560px}.hero-art{min-height:230px;display:grid;place-items:center;position:relative}.orb{width:185px;height:185px;border:1px solid #31e8ff8c;border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:0 0 55px #31e8ff1e,inset 0 0 35px #31e8ff12;animation:float 4s ease-in-out infinite}.orb:before,.orb:after{content:"";position:absolute;border:1px dashed #a66bff88;border-radius:50%;inset:-19px;animation:spin 18s linear infinite}.orb:after{inset:15px;border-style:solid;border-color:#31e8ff55;animation-direction:reverse;animation-duration:10s}.orb span{font-size:66px;filter:drop-shadow(0 0 16px #31e8ff)}.spark{position:absolute;color:var(--cyan);animation:pulse 2s infinite}.s1{top:20%;left:18%}.s2{right:13%;bottom:18%;color:var(--violet);animation-delay:.8s}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0 30px}.stat,.panel,.level-card{background:linear-gradient(145deg,#121c2dE8,#0c1321E8);border:1px solid #26364c;border-radius:18px;padding:18px;box-shadow:0 12px 35px #0002}.stat strong{font-size:25px;display:block}.stat span{color:var(--muted);font-size:12px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:34px 0 15px}.section-title h2{margin:0;font-size:22px}.section-title p{margin:5px 0 0;color:var(--muted);font-size:13px}.levels{display:grid;grid-template-columns:1fr 1fr;gap:16px}.level-card{padding:23px;position:relative;overflow:hidden;transition:.25s}.level-card:hover{transform:translateY(-4px);border-color:#31e8ff88;box-shadow:0 15px 40px #31e8ff0d}.level-card:after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;right:-50px;top:-60px;background:#31e8ff0b;filter:blur(3px)}.level-top{display:flex;justify-content:space-between;align-items:center}.level-no{font-size:11px;letter-spacing:.15em;color:var(--cyan);font-weight:900}.level-icon{font-size:28px}.level-card h3{font-size:24px;margin:12px 0 8px}.level-card p{color:var(--muted);line-height:1.6;font-size:14px;min-height:45px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0 20px}.tag{font-size:11px;color:#c7d6eb;background:#1a2940;border:1px solid #293c56;padding:6px 9px;border-radius:8px}.primary{background:linear-gradient(100deg,#24d9f3,#7a83ff);color:#06111c;border:0;padding:13px 17px;border-radius:11px;font-weight:900;cursor:pointer;width:100%;box-shadow:0 7px 25px #31e8ff20}.primary:hover{filter:brightness(1.12);transform:translateY(-1px)}.quiz{display:none;margin-top:25px;animation:rise .4s ease}.quiz.active{display:block}.quiz-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:17px}.progress{height:7px;background:#202c40;border-radius:99px;overflow:hidden;margin:12px 0 20px}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:width .3s}.qmeta{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.1em}.question{font-size:clamp(20px,3vw,27px);line-height:1.35;margin:10px 0 20px}.answers{display:grid;gap:10px}.answer{background:#111b2b;border:1px solid #2b3a50;color:var(--text);border-radius:12px;padding:15px;text-align:left;cursor:pointer;transition:.18s;display:flex;gap:12px;align-items:center}.answer b{width:28px;height:28px;border:1px solid #41516b;border-radius:8px;display:grid;place-items:center;color:var(--muted);font-size:12px;flex-shrink:0}.answer:hover:not(:disabled){border-color:var(--cyan);background:#15263a}.answer.correct{border-color:var(--green);background:#123328}.answer.wrong{border-color:var(--red);background:#351927}.answer:disabled{cursor:default}.feedback{margin-top:15px;padding:13px 15px;border-radius:12px;background:#111b2b;color:var(--muted);display:none;line-height:1.5}.feedback.show{display:block;animation:rise .25s}.feedback.good{border:1px solid #45f5a655;color:#baf8dc}.feedback.bad{border:1px solid #ff547855;color:#ffd0db}.quiz-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}.btn-cyan{background:var(--cyan);color:#07111b;border:0}.result{text-align:center;padding:30px 10px}.result .medal{font-size:58px;animation:float 3s infinite}.result h2{font-size:34px;margin:12px}.result p{color:var(--muted)}.result-score{font-size:52px;font-weight:900;color:var(--cyan)}.hidden{display:none!important}.footer{text-align:center;color:#61748f;font-size:12px;margin-top:45px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:#15243a;border:1px solid #334b69;padding:11px 16px;border-radius:12px;transition:.25s;pointer-events:none;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@media(max-width:720px){.hero{grid-template-columns:1fr}.hero-art{min-height:170px;grid-row:1}.orb{width:130px;height:130px}.orb span{font-size:48px}.hero{gap:4px}.top{margin-bottom:30px}.levels{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:13px}.stat strong{font-size:21px}.stat span{font-size:10px}.hero h1{font-size:45px}.section-title{align-items:start;flex-direction:column}}
 </style>
 </head>
-<body class="text-white p-4 select-none relative flex flex-col items-center justify-between min-h-screen">
-
-<div id="starfield" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
-
-<header class="w-full max-w-md z-10 flex justify-between items-center bg-indigo-950/80 border border-indigo-500/40 rounded-2xl p-3 shadow-lg mb-4 backdrop-blur">
-  <div class="flex items-center space-x-2">
-    <span class="text-3xl animate-bounce">🚀</span>
-    <div>
-      <h1 class="font-bold text-lg text-yellow-300 leading-tight">Misi Angkasa</h1>
-      <p class="text-xs text-indigo-200">Darjah 3 (9 Tahun)</p>
-    </div>
-  </div>
-  <div class="flex items-center space-x-3">
-    <div class="bg-amber-500/20 border border-amber-400 px-3 py-1 rounded-full flex items-center space-x-1">
-      <span class="text-xl">⭐</span>
-      <span id="scoreDisplay" class="font-bold text-amber-300 text-sm">0</span>
-    </div>
-    <button onclick="toggleAudio()" id="audioBtn" class="bg-purple-600 hover:bg-purple-500 px-3 py-1.5 rounded-xl text-sm bouncy-btn shadow-md text-white font-bold">🎵 Muzik</button>
-  </div>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">ϟ</div><div>MECHA<span style="color:var(--cyan)">ARENA</span><small>TECHNICAL SKILLS • QUIZ SYSTEM</small></div></div>
+  <div class="top-actions"><button class="pill" id="musicBtn" title="Hidup atau matikan muzik">♫ Muzik: OFF</button><button class="pill" id="soundBtn">🔊 Kesan bunyi: ON</button></div>
 </header>
-
-<div class="w-full max-w-md z-10 bg-indigo-900/60 border border-cyan-400/40 rounded-2xl p-3 mb-4 flex items-center space-x-3 shadow-md relative overflow-hidden">
-  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
-  <div class="relative">
-    <div class="w-14 h-14 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg border border-cyan-300 animate-bounce">
-      🤖
-    </div>
-    <span class="absolute -bottom-1 -right-1 bg-cyan-400 w-4 h-4 rounded-full border-2 border-indigo-950"></span>
-  </div>
-  <div class="flex-1">
-    <div class="flex justify-between items-center">
-      <span class="font-bold text-xs text-cyan-300 tracking-wider">ROBO-BOT v3.0</span>
-      <span class="text-[10px] bg-cyan-950 border border-cyan-500 px-2 py-0.5 rounded-full text-cyan-200">Sistem Online</span>
-    </div>
-    <p id="robotSpeech" class="text-xs sm:text-sm text-indigo-100 mt-1 font-medium leading-snug">Bip bop! Pilih stesen misi di bawah untuk teroka angkasa bersama!</p>
-  </div>
-</div>
-
-<main class="w-full max-w-md z-10 flex-1 flex flex-col justify-center items-center">
-  
-  <!-- Mission Selector Screen -->
-  <div id="menuScreen" class="w-full space-y-3">
-    <div class="text-center mb-2">
-      <h2 class="text-xl font-bold text-yellow-300">Pilih Stesen Misi Anda 🌟</h2>
-      <p class="text-xs text-gray-300">Tekan mana-mana tajuk untuk mula belajar & bermain!</p>
-    </div>
-    
-    <button onclick="startMission('sifir')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
-      <div class="flex items-center space-x-3">
-        <span class="text-3xl bg-pink-500/20 p-2.5 rounded-xl border border-pink-500/40">✖️</span>
-        <div class="text-left">
-          <h3 class="font-bold text-base text-pink-300">Sifir & Darab Angkasa</h3>
-          <p class="text-xs text-gray-300">Bijak sifir 2 hingga 9 dengan roket</p>
-        </div>
-      </div>
-      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
-    </button>
-
-    <button onclick="startMission('bahagi')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
-      <div class="flex items-center space-x-3">
-        <span class="text-3xl bg-cyan-500/20 p-2.5 rounded-xl border border-cyan-500/40">➗</span>
-        <div class="text-left">
-          <h3 class="font-bold text-base text-cyan-300">Bahagian Komet</h3>
-          <p class="text-xs text-gray-300">Kongsi sama rata batu meteor</p>
-        </div>
-      </div>
-      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
-    </button>
-
-    <button onclick="startMission('pecahan')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
-      <div class="flex items-center space-x-3">
-        <span class="text-3xl bg-purple-500/20 p-2.5 rounded-xl border border-purple-500/40">🍕</span>
-        <div class="text-left">
-          <h3 class="font-bold text-base text-purple-300">Pecahan Planet</h3>
-          <p class="text-xs text-gray-300">Kira pecahan pizza angkasa</p>
-        </div>
-      </div>
-      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
-    </button>
-
-    <button onclick="startMission('wang')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
-      <div class="flex items-center space-x-3">
-        <span class="text-3xl bg-emerald-500/20 p-2.5 rounded-xl border border-emerald-500/40">💰</span>
-        <div class="text-left">
-          <h3 class="font-bold text-base text-emerald-300">Kedai Runcit Angkasa</h3>
-          <p class="text-xs text-gray-300">Kira wang dan baki pembelian</p>
-        </div>
-      </div>
-      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
-    </button>
-  </div>
-
-  <!-- Active Quiz Screen (Hidden by default) -->
-  <div id="gameScreen" class="w-full cosmic-card rounded-3xl p-6 shadow-2xl hidden flex flex-col items-center relative overflow-hidden">
-    <div class="w-full flex justify-between items-center mb-4">
-      <button onclick="returnToMenu()" class="text-xs bg-indigo-900/80 border border-indigo-500/50 px-3 py-1.5 rounded-xl text-indigo-200 bouncy-btn">⬅️ Menu Utama</button>
-      <span id="questionCounter" class="text-xs font-bold text-yellow-300 bg-yellow-500/10 border border-yellow-500/30 px-3 py-1 rounded-full">Soalan 1/5</span>
-    </div>
-
-    <!-- Question Box -->
-    <div id="questionEmoji" class="text-6xl mb-2 animate-float">🚀</div>
-    <div id="questionTitle" class="text-lg font-bold text-center text-white mb-1">Berapakah hasil darab ini?</div>
-    <div id="questionMath" class="text-3xl font-extrabold text-yellow-300 mb-6 tracking-wider bg-indigo-950/60 px-6 py-2 rounded-2xl border border-indigo-500/40 shadow-inner">4 × 5 = ?</div>
-
-    <!-- Options Grid -->
-    <div id="optionsContainer" class="grid grid-cols-2 gap-3 w-full mb-4">
-      <!-- Injected via JS -->
-    </div>
-
-    <!-- Feedback banner inside game -->
-    <div id="feedbackBox" class="text-center font-bold text-sm h-8 mt-2 transition-all duration-300 text-yellow-300"></div>
-  </div>
-
-  <!-- Completion Modal Screen -->
-  <div id="completeModal" class="w-full cosmic-card rounded-3xl p-6 shadow-2xl hidden flex flex-col items-center text-center">
-    <div class="text-7xl mb-3 animate-bounce">🏆</div>
-    <h2 class="text-2xl font-extrabold text-yellow-300 mb-1">Misi Selesai!</h2>
-    <p id="completeMessage" class="text-sm text-indigo-200 mb-6">Hebat! Awak berjaya mengumpul 5 Bintang Angkasa!</p>
-    <button onclick="returnToMenu()" class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl shadow-lg bouncy-btn text-base">
-      Teroka Misi Lain 🚀
-    </button>
-  </div>
-
-</main>
-
-<footer class="w-full max-w-md z-10 text-center py-2 text-xs text-indigo-300/80">
-  Matematik Darjah 3 • Belajar Sambil Bermain 🌟
-</footer>
-
+<section class="hero">
+  <div><div class="eyebrow">/// CABARAN KEMAHIRAN TEKNIKAL</div><h1>UJI MINDA.<br><span>KUASAI MESIN.</span></h1><p>Naikkan tahap kemahiran mekatronik anda. Jawab soalan, kumpul mata XP dan buktikan anda pakar automasi seterusnya.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px"><button class="btn btn-cyan" onclick="document.getElementById('levels').scrollIntoView({behavior:'smooth'})">MULA CABARAN ↘</button><button class="btn" id="howBtn">Cara bermain</button></div></div>
+  <div class="hero-art"><span class="spark s1">✦</span><span class="spark s2">✧</span><div class="orb"><span>⚙</span></div></div>
+</section>
+<div class="stats"><div class="stat"><strong id="totalXp">0 XP</strong><span>JUMLAH XP</span></div><div class="stat"><strong id="bestScore">—</strong><span>REKOD TERBAIK</span></div><div class="stat"><strong>02</strong><span>MOD TAHAP</span></div></div>
+<section id="levels"><div class="section-title"><div><h2>Pilih misi anda</h2><p>Pilih tahap untuk mula menjawab 5 soalan.</p></div><span class="eyebrow">SELECT MISSION / 02</span></div>
+<div class="levels">
+ <article class="level-card"><div class="level-top"><span class="level-no">LEVEL 02 / FOUNDATION</span><span class="level-icon">🔧</span></div><h3>Tahap 2 — Asas Sistem</h3><p>Uji pengetahuan komponen, sensor, motor elektrik, pneumatik dan asas kawalan PLC.</p><div class="tags"><span class="tag">Sensor</span><span class="tag">Motor</span><span class="tag">Pneumatik</span><span class="tag">PLC asas</span></div><button class="primary" onclick="startQuiz(2)">MULAKAN TAHAP 2 →</button></article>
+ <article class="level-card"><div class="level-top"><span class="level-no" style="color:var(--violet)">LEVEL 03 / ADVANCED</span><span class="level-icon">🤖</span></div><h3>Tahap 3 — Automasi</h3><p>Cabaran PLC, troubleshooting, sistem kawalan, integrasi sensor dan keselamatan industri.</p><div class="tags"><span class="tag">PLC</span><span class="tag">Troubleshooting</span><span class="tag">Kawalan</span><span class="tag">Integrasi</span></div><button class="primary" style="background:linear-gradient(100deg,#a66bff,#6e9dff)" onclick="startQuiz(3)">MULAKAN TAHAP 3 →</button></article>
+</div></section>
+<section class="quiz panel" id="quiz"><div id="quizContent">
+ <div class="quiz-head"><div><div class="qmeta" id="quizLevel">LEVEL 02</div><div style="font-weight:800;margin-top:5px" id="quizTitle">Asas Sistem</div></div><div class="pill" id="timer">⏱ 20s</div></div>
+ <div class="progress"><div id="progressBar"></div></div><div class="qmeta" id="questionCount">SOALAN 1 / 5</div><h2 class="question" id="questionText"></h2><div class="answers" id="answers"></div><div class="feedback" id="feedback"></div><div class="quiz-bottom"><span style="color:var(--muted);font-size:13px" id="scoreLive">Skor: 0</span><button class="btn btn-cyan" id="nextBtn" disabled>Seterusnya →</button></div>
+</div><div class="result hidden" id="result"><div class="medal" id="resultIcon">🏆</div><div class="eyebrow">MISI SELESAI</div><h2 id="resultTitle">Hebat!</h2><div class="result-score" id="resultScore">0/5</div><p id="resultDesc"></p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px"><button class="btn btn-cyan" id="retryBtn">Cuba lagi ↻</button><button class="btn" onclick="document.getElementById('levels').scrollIntoView({behavior:'smooth'})">Pilih tahap lain</button></div></div></section>
+<div class="footer">MECHAARENA • BELAJAR · UJI · TINGKATKAN KEMAHIRAN <br style="margin-bottom:7px">Nota: Soalan latihan umum, bukan pengganti SOP atau latihan keselamatan mesin.</div>
+</div><div class="toast" id="toast"></div>
 <script>
-  let audioCtx = null;
-  let isAudioOn = false;
-  let currentMission = null;
-  let currentQuestionIndex = 0;
-  let score = 0;
-  let currentQuestionsList = [];
-  let spaceMusicInterval = null;
-  let isMusicPlaying = false;
-  let lastRobotText = "Bip bop! Pilih stesen misi di bawah untuk teroka angkasa bersama!";
-
-  function initAudio() {
-    try {
-      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-    } catch(e) {}
-  }
-
-  function playTone(freq, duration = 0.15, type = 'sine') {
-    if (!isAudioOn) return;
-    try {
-      initAudio();
-      let osc = audioCtx.createOscillator();
-      let gain = audioCtx.createGain();
-      osc.type = type;
-      osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    } catch(e) {}
-  }
-
-  function playSuccessSound() {
-    if (!isAudioOn) return;
-    playTone(523, 0.1);
-    setTimeout(() => playTone(659, 0.1), 100);
-    setTimeout(() => playTone(784, 0.2), 200);
-  }
-
-  function playErrorSound() {
-    if (!isAudioOn) return;
-    playTone(200, 0.2, 'sawtooth');
-    setTimeout(() => playTone(150, 0.2, 'sawtooth'), 150);
-  }
-
-  function toggleAudio() {
-    isAudioOn = !isAudioOn;
-    let btn = document.getElementById('audioBtn');
-    if (isAudioOn) {
-      initAudio();
-      btn.textContent = '🔊 Muzik On';
-      playTone(440, 0.1);
-      startSpaceAmbient();
-      setRobotMessage("Muzik kosmik angkasa diaktifkan! Jom kita mula!");
-    } else {
-      btn.textContent = '🔇 Muzik Off';
-      stopSpaceAmbient();
-      setRobotMessage("Audio ditutup. Senyap di angkasa lepas.");
-    }
-  }
-
-  // Generative Space Ambient Music Generator using Web Audio API
-  function startSpaceAmbient() {
-    if (isMusicPlaying || !audioCtx) return;
-    isMusicPlaying = true;
-    
-    const chordFrequencies = [130.81, 196.00, 261.63, 329.63, 392.00, 523.25];
-    
-    function playCosmicDrone() {
-      if (!isAudioOn) return;
-      try {
-        let osc1 = audioCtx.createOscillator();
-        let osc2 = audioCtx.createOscillator();
-        let gainNode = audioCtx.createGain();
-        
-        let freq1 = chordFrequencies[Math.floor(Math.random() * chordFrequencies.length)];
-        let freq2 = freq1 * 1.5;
-        
-        osc1.type = 'sine';
-        osc2.type = 'triangle';
-        osc1.frequency.setValueAtTime(freq1, audioCtx.currentTime);
-        osc2.frequency.setValueAtTime(freq2, audioCtx.currentTime);
-        
-        gainNode.gain.setValueAtTime(0.001, audioCtx.currentTime);
-        gainNode.gain.linearRampToValueAtTime(0.035, audioCtx.currentTime + 2.0);
-        gainNode.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 5.0);
-        
-        osc1.connect(gainNode);
-        osc2.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-        
-        osc1.start();
-        osc2.start();
-        osc1.stop(audioCtx.currentTime + 5.0);
-        osc2.stop(audioCtx.currentTime + 5.0);
-      } catch(e) {}
-    }
-    
-    playCosmicDrone();
-    spaceMusicInterval = setInterval(playCosmicDrone, 4000);
-  }
-
-  function stopSpaceAmbient() {
-    isMusicPlaying = false;
-    if (spaceMusicInterval) {
-      clearInterval(spaceMusicInterval);
-      spaceMusicInterval = null;
-    }
-  }
-
-  function setRobotMessage(text) {
-    lastRobotText = text;
-    const el = document.getElementById('robotSpeech');
-    if(el) el.textContent = text;
-  }
-
-  function createStarfield() {
-    const starfield = document.getElementById('starfield');
-    for (let i = 0; i < 40; i++) {
-      let star = document.createElement('div');
-      star.className = 'star';
-      let size = Math.random() * 3 + 1;
-      star.style.width = size + 'px';
-      star.style.height = size + 'px';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 2 + 1) + 's';
-      star.style.animationDelay = (Math.random() * 2) + 's';
-      starfield.appendChild(star);
-    }
-  }
-
-  const missionsData = {
-    sifir: [
-      { emoji: '🚀', title: 'Berapakah hasil darab roket ini?', math: '4 × 3 = ?', options: [10, 12, 14, 16], answer: 12, hint: 'Empat kali tiga sama dengan dua belas!' },
-      { emoji: '🌟', title: 'Kira bilangan bintang angkasa:', math: '6 × 5 = ?', options: [25, 30, 35, 20], answer: 30, hint: 'Enam darab lima ialah tiga puluh.' },
-      { emoji: '🪐', title: 'Berapakah jumlah planet bernilai 7 untuk 4 kumpulan?', math: '7 × 4 = ?', options: [24, 28, 32, 21], answer: 28, hint: 'Tujuh kali empat bersamaan dua puluh lapan.' },
-      { emoji: '🛸', title: 'Pendaratan UFO sebanyak 8 kali ke 3 pangkalan:', math: '8 × 3 = ?', options: [21, 24, 27, 18], answer: 24, hint: 'Lapan darab tiga ialah dua puluh empat.' },
-      { emoji: '👽', title: 'Berapakah tangan untuk 9 makhluk asing berserta 2 tangan?', math: '9 × 2 = ?', options: [16, 18, 20, 14], answer: 18, hint: 'Sembilan kali dua ialah lapan belas.' }
-    ],
-    bahagi: [
-      { emoji: '☄️', title: '12 batu meteor dibahagi kepada 3 kawah sama rata:', math: '12 ÷ 3 = ?', options: [3, 4, 5, 6], answer: 4, hint: 'Dua belas bahagi tiga dapat empat!' },
-      { emoji: '🌌', title: '20 bintang diagihkan kepada 4 angkasawan:', math: '20 ÷ 4 = ?', options: [4, 5, 6, 8], answer: 5, hint: 'Dua puluh bahagi empat ialah lima.' },
-      { emoji: '🛸', title: '18 alien masuk ke dalam 2 buah kapal:', math: '18 ÷ 2 = ?', options: [8, 9, 7, 6], answer: 9, hint: 'Lapan belas bahagi dua ialah sembilan.' },
-      { emoji: '🌕', title: '24 keping biskut bulan dibahagi kepada 6 orang:', math: '24 ÷ 6 = ?', options: [3, 4, 5, 6], answer: 4, hint: 'Dua puluh empat bahagi enam ialah empat.' },
-      { emoji: '🚀', title: '30 roket disusun dalam 5 barisan:', math: '30 ÷ 5 = ?', options: [5, 6, 7, 8], answer: 6, hint: 'Tiga puluh bahagi lima ialah enam.' }
-    ],
-    pecahan: [
-      { emoji: '🍕', title: 'Pilih pecahan untuk separuh pizza angkasa:', math: '1 separuh daripada 2 bahagian = ?', options: ['1/2', '1/4', '3/4', '2/3'], answer: '1/2', hint: 'Satu perdua ditulis sebagai 1 per 2.' },
-      { emoji: '🍰', title: 'Kek dipotong kepada 4 bahagian, diambil 1 bahagian:', math: 'Pecahan bahagian diambil = ?', options: ['1/2', '1/4', '2/4', '3/4'], answer: '1/4', hint: 'Satu perempat ialah 1 per 4.' },
-      { emoji: '🟧', title: 'Tiga bahagian berlorek daripada 4 bahagian sama besar:', math: 'Namakan pecahan ini:', options: ['1/4', '2/4', '3/4', '4/4'], answer: '3/4', hint: 'Tiga perempat ditulis 3 per 4.' },
-      { emoji: '🍫', title: '2 bahagian daripada 4 bahagian coklat angkasa:', math: '2/4 adalah sama nilainya dengan:', options: ['1/2', '1/3', '3/4', '1/4'], answer: '1/2', hint: 'Dua perempat dipermudahkan jadi satu perdua.' },
-      { emoji: '🍉', title: 'Sebiji tembikai dipotong 8, diambil 4 bahagian:', math: '4/8 dipermudahkan jadi:', options: ['1/4', '1/2', '3/4', '2/3'], answer: '1/2', hint: 'Empat per lapan bersamaan separuh (1/2).' }
-    ],
-    wang: [
-      { emoji: '💰', title: 'Ali ada RM50. Beli mainan roket berharga RM32. Berapakah baki?', math: 'RM50 - RM32 = ?', options: ['RM12', 'RM18', 'RM20', 'RM15'], answer: 'RM18', hint: 'Lima puluh tolak tiga puluh dua baki lapan belas ringgit.' },
-      { emoji: '🪙', title: 'RM15.50 + RM4.20 = ?', math: 'Jumlah wang:', options: ['RM19.70', 'RM19.50', 'RM20.10', 'RM18.70'], answer: 'RM19.70', hint: 'Tambahkan ringgit dengan ringgit, sen dengan sen!' },
-      { emoji: '🚀', title: 'Harga 2 tiket kapal angkasa masing-masing RM25:', math: '2 × RM25 = ?', options: ['RM40', 'RM45', 'RM50', 'RM60'], answer: 'RM50', hint: 'Dua kali dua puluh lima ringgit ialah lima puluh ringgit.' },
-      { emoji: '🪐', title: 'Baki daripada RM100 selepas membeli buku RM65:', math: 'RM100 - RM65 = ?', options: ['RM25', 'RM30', 'RM35', 'RM40'], answer: 'RM35', hint: 'Seratus tolak enam puluh lima ialah tiga puluh lima ringgit.' },
-      { emoji: '⭐', title: 'RM10.00 - RM4.30 = ?', math: 'Kira baki:', options: ['RM5.50', 'RM5.70', 'RM6.30', 'RM4.70'], answer: 'RM5.70', hint: 'Sepuluh ringgit tolak empat ringgit tiga puluh sen.' }
-    ]
-  };
-
-  function startMission(missionKey) {
-    initAudio();
-    playTone(550, 0.15);
-    currentMission = missionKey;
-    currentQuestionIndex = 0;
-    currentQuestionsList = [...missionsData[missionKey]];
-    
-    document.getElementById('menuScreen').classList.add('hidden');
-    document.getElementById('completeModal').classList.add('hidden');
-    document.getElementById('gameScreen').classList.remove('hidden');
-
-    setRobotMessage(`Wah, misi ${missionKey} bermula! Bersedia untuk menjawab soalan.`);
-    loadQuestion();
-  }
-
-  function returnToMenu() {
-    playTone(400, 0.1);
-    document.getElementById('gameScreen').classList.add('hidden');
-    document.getElementById('completeModal').classList.add('hidden');
-    document.getElementById('menuScreen').classList.remove('hidden');
-    setRobotMessage("Sila pilih stesen misi yang lain pula ya!");
-  }
-
-  function loadQuestion() {
-    if (currentQuestionIndex >= currentQuestionsList.length) {
-      showCompletionModal();
-      return;
-    }
-
-    let q = currentQuestionsList[currentQuestionIndex];
-    document.getElementById('questionCounter').textContent = `Soalan ${currentQuestionIndex + 1}/${currentQuestionsList.length}`;
-    document.getElementById('questionEmoji').textContent = q.emoji;
-    document.getElementById('questionTitle').textContent = q.title;
-    document.getElementById('questionMath').textContent = q.math;
-    document.getElementById('feedbackBox').textContent = '';
-
-    setRobotMessage(`${q.title}. Berapakah ${q.math.replace('= ?', '')}?`);
-
-    let optionsContainer = document.getElementById('optionsContainer');
-    optionsContainer.innerHTML = '';
-
-    let shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
-
-    shuffledOptions.forEach(opt => {
-      let btn = document.createElement('button');
-      btn.className = 'bg-indigo-900/80 hover:bg-indigo-800 border-2 border-indigo-500/50 hover:border-yellow-400 text-white font-bold py-3.5 px-4 rounded-2xl shadow-md bouncy-btn text-lg transition';
-      btn.textContent = opt;
-  
+const bank={
+2:[
+{q:"Apakah fungsi utama sensor dalam sistem mekatronik?",a:["Menyimpan tenaga elektrik","Mengesan perubahan fizikal dan menghantar isyarat","Menambah kelajuan motor secara automatik","Menggantikan semua pengawal"],c:1,e:"Sensor mengesan kuantiti seperti kedudukan, suhu atau jarak lalu menukarkannya kepada isyarat untuk sistem kawalan."},
+{q:"Komponen manakah biasanya digunakan untuk menukar tenaga elektrik kepada gerakan putaran?",a:["Relay","Fius","Motor elektrik","Termistor"],c:2,e:"Motor elektrik menukarkan tenaga elektrik kepada tenaga mekanikal, lazimnya dalam bentuk putaran."},
+{q:"Dalam sistem pneumatik, apakah medium yang digunakan untuk memindahkan tenaga?",a:["Udara termampat","Minyak pelincir sahaja","Isyarat cahaya","Air penyejuk"],c:0,e:"Sistem pneumatik menggunakan udara atau gas termampat untuk menghasilkan gerakan dan daya."},
+{q:"Apakah peranan PLC dalam sistem automasi?",a:["Menyejukkan panel kawalan","Mengawal proses berdasarkan input dan program","Mengukur berat tanpa sensor","Membekalkan udara termampat"],c:1,e:"PLC membaca input, melaksanakan logik program dan mengawal output seperti motor atau injap."},
+{q:"Apakah tujuan fius dalam litar elektrik?",a:["Meningkatkan voltan","Mengesan kedudukan silinder","Melindungi litar daripada arus berlebihan","Menukar AC kepada gerakan"],c:2,e:"Fius memutuskan litar apabila arus melebihi had tertentu, membantu mengurangkan risiko kerosakan."}
+],
+3:[
+{q:"Dalam ladder logic PLC, apakah fungsi asas kenalan NO (normally open)?",a:["Sentiasa memutuskan litar","Benar apabila bit/keadaan berkaitan ON","Menukar AC kepada DC","Melindungi daripada kebocoran udara"],c:1,e:"Kenalan NO dalam logik ladder menjadi benar apabila keadaan atau bit yang dirujuk berada dalam keadaan ON."},
+{q:"Motor tidak bergerak walaupun arahan START diberi. Apakah tindakan awal paling selamat?",a:["Terus pintaskan litar keselamatan","Naikkan voltan tanpa pemeriksaan","Ikut prosedur keselamatan, asingkan tenaga jika perlu dan periksa punca secara sistematik","Tukar semua komponen serta-merta"],c:2,e:"Utamakan SOP dan pengasingan tenaga yang sesuai. Kemudian periksa bekalan, interlock, fault dan isyarat kawalan oleh orang kompeten."},
+{q:"Mengapa interlock digunakan dalam sistem kawalan?",a:["Untuk membolehkan keadaan berbahaya berlaku lebih cepat","Untuk menghalang urutan atau keadaan operasi yang tidak dibenarkan","Untuk menaikkan suhu motor","Untuk menggantikan semua sensor"],c:1,e:"Interlock menghalang operasi apabila syarat tertentu tidak dipenuhi, bagi melindungi peralatan dan manusia."},
+{q:"Apakah tujuan maklum balas (feedback) dalam sistem kawalan gelung tertutup?",a:["Membandingkan output sebenar dengan nilai sasaran","Memadam program PLC","Menghentikan semua bacaan sensor","Menghapuskan keperluan pengawal"],c:0,e:"Feedback membolehkan pengawal membandingkan output yang diukur dengan setpoint dan membuat pembetulan."},
+{q:"Sensor kedudukan memberikan bacaan tidak stabil. Apakah langkah diagnosis yang munasabah?",a:["Abaikan bacaan","Ubah program secara rawak","Periksa sambungan, bekalan, penjajaran dan gangguan mengikut prosedur","Buang semua perlindungan mesin"],c:2,e:"Diagnosis bermula dengan pemeriksaan sistematik: pendawaian, bekalan, pemasangan, keadaan sensor dan noise."}
+]};
+let level=2,index=0,score=0,answered=false,timerId=null,timeLeft=20,soundOn=true,musicOn=false,audioCtx=null,oscillators=[],best=Number(localStorage.getItem('mechaBest')||0),xp=Number(localStorage.getItem('mechaXP')||0);
+const $=id=>document.getElementById(id);$('totalXp').textContent=xp+' XP';$('bestScore').textContent=best?best+'/5':'—';
+function beep(freq=650,duration=.12,type='sine',volume=.045){if(!soundOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch(e){}}
+function startMusic(){try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();stopMusic();musicOn=true;let notes=[220,277.18,329.63,440,329.63,277.18,246.94,329.63],i=0;function tick(){if(!musicOn)return;let now=audioCtx.currentTime,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='triangle';o.frequency.value=notes[i%notes.length];g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(.035,now+.025);g.gain.exponentialRampToValueAtTime(.0001,now+.22);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+.23);i++;musicTimer=setTimeout(tick,240)}tick();$('musicBtn').textContent='♫ Muzik: ON';$('musicBtn').style.borderColor='var(--green)'}catch(e){toast('Pelayar tidak menyokong audio ini')}}let musicTimer;
+function stopMusic(){musicOn=false;clearTimeout(musicTimer);$('musicBtn').textContent='♫ Muzik: OFF';$('musicBtn').style.borderColor=''}
+$('musicBtn').onclick=()=>{if(musicOn)stopMusic();else startMusic()};$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊 Kesan bunyi: ON':'🔇 Kesan bunyi: OFF';if(soundOn)beep()};
+$('howBtn').onclick=()=>toast('Pilih tahap, jawab 5 soalan. Setiap jawapan betul = 100 XP. Masa setiap soalan: 20 saat.');
+function startQuiz(l){level=l;index=0;score=0;$('quiz').classList.add('active');$('quizContent').classList.remove('hidden');$('result').classList.add('hidden');$('quizLevel').textContent='LEVEL 0'+l;$('quizTitle').textContent=l===2?'Asas Sistem':'Automasi & Troubleshooting';$('quiz').scrollIntoView({behavior:'smooth',block:'start'});renderQuestion();beep(520,.15)}
+function renderQuestion(){clearInterval(timerId);answered=false;timeLeft=20;let item=bank[level][index];$('questionCount').textContent=`SOALAN ${index+1} / ${bank[level].length}`;$('progressBar').style.width=(index/bank[level].length*100)+'%';$('questionText').textContent=item.q;$('answers').innerHTML='';$('feedback').className='feedback';$('feedback').textContent='';$('nextBtn').disabled=true;$('nextBtn').textContent=index===bank[level].length-1?'Lihat keputusan →':'Seterusnya →';$('scoreLive').textContent='Skor: '+score;
+item.a.forEach((a,i)=>{let b=document.createElement('button');b.className='answer';b.innerHTML=`<b>${String.fromCharCode(65+i)}</b><span>${a}</span>`;b.onclick=()=>choose(i);$('answers').appendChild(b)});updateTimer();timerId=setInterval(()=>{timeLeft--;updateTimer();if(timeLeft<=0){clearInterval(timerId);if(!answered)choose(-1)}},1000)}
+function updateTimer(){$('timer').textContent='⏱ '+timeLeft+'s';$('timer').style.color=timeLeft<=5?'var(--red)':'var(--text)';}
+function choose(choice){if(answered)return;answered=true;clearInterval(timerId);let item=bank[level][index],buttons=[...document.querySelectorAll('.answer')];buttons.forEach((b,i)=>{b.disabled=true;if(i===item.c)b.classList.add('correct');if(i===choice&&choice!==item.c)b.classList.add('wrong')});let good=choice===item.c;if(good){score++;beep(820,.17,'triangle')}else beep(180,.25,'sawtooth',.025);let f=$('feedback');f.className='feedback show '+(good?'good':'bad');f.textContent=(good?'✓ Tepat! ':'✕ Belum tepat. ')+(choice===-1?'Masa tamat. ':'')+item.e;$('scoreLive').textContent='Skor: '+score;$('nextBtn').disabled=false;$('progressBar').style.width=((index+1)/bank[level].length*100)+'%'}
+$('nextBtn').onclick=()=>{if(!answered)return;if(index<bank[level].length-1){index++;renderQuestion()}else finish()};
+function finish(){clearInterval(timerId);let earned=score*100;xp+=earned;localStorage.setItem('mechaXP',xp);if(score>best){best=score;localStorage.setItem('mechaBest',best)}$('totalXp').textContent=xp+' XP';$('bestScore').textContent=best+'/5';$('quizContent').classList.add('hidden');$('result').classList.remove('hidden');$('resultScore').textContent=score+'/5';$('resultTitle').textContent=score===5?'Sempurna, jurutera!':score>=3?'Bagus! Terus tingkatkan.':'Terus berlatih!';$('resultIcon').textContent=score===5?'🏆':score>=3?'⚡':'🛠️';$('resultDesc').textContent=`Anda memperoleh ${earned} XP. ${score>=4?'Penguasaan yang mantap!': 'Semak penerangan jawapan dan cuba lagi untuk tingkatkan sko
