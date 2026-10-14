@@ -3,80 +3,209 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tadika Ceria - Belajar Sambil Bermain</title>
+<title>Misi Angkasa Matematik - Darjah 3 (9 Tahun)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   body {
     font-family: 'Fredoka', cursive, sans-serif;
-    background: linear-gradient(135deg, #fef08a 0%, #bae6fd 50%, #fbcfe8 100%);
+    background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
     min-height: 100vh;
+    overflow-x: hidden;
     touch-action: manipulation;
   }
-  .bouncy-card {
-    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+
+  /* Starfield animation */
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out alternate;
   }
-  .bouncy-card:active {
+  @keyframes twinkle {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Floating animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.5); }
+    50% { box-shadow: 0 0 30px rgba(236, 72, 153, 0.8); }
+  }
+  .cosmic-card {
+    background: rgba(30, 27, 75, 0.85);
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: pulseGlow 4s infinite;
+  }
+
+  .bouncy-btn {
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s;
+  }
+  .bouncy-btn:active {
     transform: scale(0.92);
-  }
-  @keyframes bounceSlow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-  .animate-bounce-slow {
-    animation: bounceSlow 2s ease-in-out infinite;
   }
 </style>
 </head>
-<body class="p-4 select-none">
+<body class="text-white p-4 select-none relative flex flex-col items-center justify-between min-h-screen">
 
-<div class="max-w-md mx-auto text-center py-4">
-  <div class="inline-block bg-white/80 backdrop-blur px-6 py-2 rounded-full shadow-md mb-2 border-2 border-yellow-300">
-    <span class="text-2xl">🌟</span> <span class="font-bold text-xl text-pink-600">Tadika Ceria 3 Tahun</span> <span class="text-2xl">🎨</span>
+<div id="starfield" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+<header class="w-full max-w-md z-10 flex justify-between items-center bg-indigo-950/80 border border-indigo-500/40 rounded-2xl p-3 shadow-lg mb-4 backdrop-blur">
+  <div class="flex items-center space-x-2">
+    <span class="text-3xl animate-bounce">🚀</span>
+    <div>
+      <h1 class="font-bold text-lg text-yellow-300 leading-tight">Misi Angkasa</h1>
+      <p class="text-xs text-indigo-200">Darjah 3 (9 Tahun)</p>
+    </div>
   </div>
-  <p class="text-gray-700 font-semibold text-sm">Tekan gambar untuk belajar dan dengar bunyi!</p>
+  <div class="flex items-center space-x-3">
+    <div class="bg-amber-500/20 border border-amber-400 px-3 py-1 rounded-full flex items-center space-x-1">
+      <span class="text-xl">⭐</span>
+      <span id="scoreDisplay" class="font-bold text-amber-300 text-sm">0</span>
+    </div>
+    <button onclick="toggleAudio()" id="audioBtn" class="bg-purple-600 hover:bg-purple-500 px-3 py-1.5 rounded-xl text-sm bouncy-btn shadow-md text-white font-bold">🎵 Muzik</button>
+  </div>
+</header>
+
+<div class="w-full max-w-md z-10 bg-indigo-900/60 border border-cyan-400/40 rounded-2xl p-3 mb-4 flex items-center space-x-3 shadow-md relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
+  <div class="relative">
+    <div class="w-14 h-14 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg border border-cyan-300 animate-bounce">
+      🤖
+    </div>
+    <span class="absolute -bottom-1 -right-1 bg-cyan-400 w-4 h-4 rounded-full border-2 border-indigo-950"></span>
+  </div>
+  <div class="flex-1">
+    <div class="flex justify-between items-center">
+      <span class="font-bold text-xs text-cyan-300 tracking-wider">ROBO-BOT v3.0</span>
+      <span class="text-[10px] bg-cyan-950 border border-cyan-500 px-2 py-0.5 rounded-full text-cyan-200">Sistem Online</span>
+    </div>
+    <p id="robotSpeech" class="text-xs sm:text-sm text-indigo-100 mt-1 font-medium leading-snug">Bip bop! Pilih stesen misi di bawah untuk teroka angkasa bersama!</p>
+  </div>
 </div>
 
-<div class="max-w-md mx-auto grid grid-cols-4 gap-2 mb-6">
-  <button onclick="switchTab('abc')" id="btn-abc" class="tab-btn bg-pink-500 text-white font-bold py-3 rounded-2xl shadow-lg border-b-4 border-pink-700 flex flex-col items-center justify-center text-sm transition transform active:scale-95">
-    <span class="text-2xl">ABC</span>
-    <span class="text-xs opacity-90">Huruf</span>
-  </button>
-  <button onclick="switchTab('123')" id="btn-123" class="tab-btn bg-amber-500 text-white font-bold py-3 rounded-2xl shadow-lg border-b-4 border-amber-700 flex flex-col items-center justify-center text-sm transition transform active:scale-95">
-    <span class="text-2xl">123</span>
-    <span class="text-xs opacity-90">Nombor</span>
-  </button>
-  <button onclick="switchTab('warna')" id="btn-warna" class="tab-btn bg-emerald-500 text-white font-bold py-3 rounded-2xl shadow-lg border-b-4 border-emerald-700 flex flex-col items-center justify-center text-sm transition transform active:scale-95">
-    <span class="text-2xl">🎨</span>
-    <span class="text-xs opacity-90">Warna</span>
-  </button>
-  <button onclick="switchTab('haiwan')" id="btn-haiwan" class="tab-btn bg-purple-500 text-white font-bold py-3 rounded-2xl shadow-lg border-b-4 border-purple-700 flex flex-col items-center justify-center text-sm transition transform active:scale-95">
-    <span class="text-2xl">🐱</span>
-    <span class="text-xs opacity-90">Haiwan</span>
-  </button>
-</div>
-
-<div class="max-w-md mx-auto bg-white/90 backdrop-blur rounded-3xl p-6 shadow-2xl border-4 border-white min-h-[380px] flex flex-col items-center justify-center relative overflow-hidden">
+<main class="w-full max-w-md z-10 flex-1 flex flex-col justify-center items-center">
   
-  <!-- Interactive Display Modal/Banner inside card -->
-  <div id="displayArea" class="text-center w-full">
-    <div id="bigEmoji" class="text-8xl mb-4 animate-bounce-slow">🍎</div>
-    <div id="bigTitle" class="text-4xl font-extrabold text-gray-800 mb-1">A</div>
-    <div id="bigDesc" class="text-xl font-bold text-pink-500">A untuk Ayam / Epal</div>
+  <!-- Mission Selector Screen -->
+  <div id="menuScreen" class="w-full space-y-3">
+    <div class="text-center mb-2">
+      <h2 class="text-xl font-bold text-yellow-300">Pilih Stesen Misi Anda 🌟</h2>
+      <p class="text-xs text-gray-300">Tekan mana-mana tajuk untuk mula belajar & bermain!</p>
+    </div>
+    
+    <button onclick="startMission('sifir')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl bg-pink-500/20 p-2.5 rounded-xl border border-pink-500/40">✖️</span>
+        <div class="text-left">
+          <h3 class="font-bold text-base text-pink-300">Sifir & Darab Angkasa</h3>
+          <p class="text-xs text-gray-300">Bijak sifir 2 hingga 9 dengan roket</p>
+        </div>
+      </div>
+      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
+    </button>
+
+    <button onclick="startMission('bahagi')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl bg-cyan-500/20 p-2.5 rounded-xl border border-cyan-500/40">➗</span>
+        <div class="text-left">
+          <h3 class="font-bold text-base text-cyan-300">Bahagian Komet</h3>
+          <p class="text-xs text-gray-300">Kongsi sama rata batu meteor</p>
+        </div>
+      </div>
+      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
+    </button>
+
+    <button onclick="startMission('pecahan')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl bg-purple-500/20 p-2.5 rounded-xl border border-purple-500/40">🍕</span>
+        <div class="text-left">
+          <h3 class="font-bold text-base text-purple-300">Pecahan Planet</h3>
+          <p class="text-xs text-gray-300">Kira pecahan pizza angkasa</p>
+        </div>
+      </div>
+      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
+    </button>
+
+    <button onclick="startMission('wang')" class="w-full cosmic-card p-4 rounded-2xl flex items-center justify-between bouncy-btn group hover:border-yellow-400">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl bg-emerald-500/20 p-2.5 rounded-xl border border-emerald-500/40">💰</span>
+        <div class="text-left">
+          <h3 class="font-bold text-base text-emerald-300">Kedai Runcit Angkasa</h3>
+          <p class="text-xs text-gray-300">Kira wang dan baki pembelian</p>
+        </div>
+      </div>
+      <span class="text-yellow-400 font-bold text-xl group-hover:translate-x-1 transition">➔</span>
+    </button>
   </div>
 
-  <!-- Interactive Grid selection -->
-  <div id="gridContainer" class="grid grid-cols-3 gap-3 w-full mt-6">
-    <!-- Dynamic buttons injected via JS -->
+  <!-- Active Quiz Screen (Hidden by default) -->
+  <div id="gameScreen" class="w-full cosmic-card rounded-3xl p-6 shadow-2xl hidden flex flex-col items-center relative overflow-hidden">
+    <div class="w-full flex justify-between items-center mb-4">
+      <button onclick="returnToMenu()" class="text-xs bg-indigo-900/80 border border-indigo-500/50 px-3 py-1.5 rounded-xl text-indigo-200 bouncy-btn">⬅️ Menu Utama</button>
+      <span id="questionCounter" class="text-xs font-bold text-yellow-300 bg-yellow-500/10 border border-yellow-500/30 px-3 py-1 rounded-full">Soalan 1/5</span>
+    </div>
+
+    <!-- Question Box -->
+    <div id="questionEmoji" class="text-6xl mb-2 animate-float">🚀</div>
+    <div id="questionTitle" class="text-lg font-bold text-center text-white mb-1">Berapakah hasil darab ini?</div>
+    <div id="questionMath" class="text-3xl font-extrabold text-yellow-300 mb-6 tracking-wider bg-indigo-950/60 px-6 py-2 rounded-2xl border border-indigo-500/40 shadow-inner">4 × 5 = ?</div>
+
+    <!-- Options Grid -->
+    <div id="optionsContainer" class="grid grid-cols-2 gap-3 w-full mb-4">
+      <!-- Injected via JS -->
+    </div>
+
+    <!-- Feedback banner inside game -->
+    <div id="feedbackBox" class="text-center font-bold text-sm h-8 mt-2 transition-all duration-300 text-yellow-300"></div>
   </div>
-</div>
+
+  <!-- Completion Modal Screen -->
+  <div id="completeModal" class="w-full cosmic-card rounded-3xl p-6 shadow-2xl hidden flex flex-col items-center text-center">
+    <div class="text-7xl mb-3 animate-bounce">🏆</div>
+    <h2 class="text-2xl font-extrabold text-yellow-300 mb-1">Misi Selesai!</h2>
+    <p id="completeMessage" class="text-sm text-indigo-200 mb-6">Hebat! Awak berjaya mengumpul 5 Bintang Angkasa!</p>
+    <button onclick="returnToMenu()" class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 hover:opacity-95 text-white font-bold py-3.5 rounded-2xl shadow-lg bouncy-btn text-base">
+      Teroka Misi Lain 🚀
+    </button>
+  </div>
+
+</main>
+
+<footer class="w-full max-w-md z-10 text-center py-2 text-xs text-indigo-300/80">
+  Matematik Darjah 3 • Belajar Sambil Bermain 🌟
+</footer>
 
 <script>
   let audioCtx = null;
-  function playTone(freq, duration = 0.15, type = 'sine') {
+  let isAudioOn = false;
+  let currentMission = null;
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let currentQuestionsList = [];
+  let spaceMusicInterval = null;
+  let isMusicPlaying = false;
+  let lastRobotText = "Bip bop! Pilih stesen misi di bawah untuk teroka angkasa bersama!";
+
+  function initAudio() {
     try {
       audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === 'suspended') audioCtx.resume();
+    } catch(e) {}
+  }
+
+  function playTone(freq, duration = 0.15, type = 'sine') {
+    if (!isAudioOn) return;
+    try {
+      initAudio();
       let osc = audioCtx.createOscillator();
       let gain = audioCtx.createGain();
       osc.type = type;
@@ -90,88 +219,221 @@
     } catch(e) {}
   }
 
-  // Data for sections
-  const data = {
-    abc: [
-      { char: 'A', name: 'Ayam', emoji: '🐔', color: 'bg-red-100 border-red-400 text-red-600', sound: 440 },
-      { char: 'B', name: 'Buku', emoji: '📘', color: 'bg-blue-100 border-blue-400 text-blue-600', sound: 493 },
-      { char: 'C', name: 'Cili', emoji: '🌶️', color: 'bg-orange-100 border-orange-400 text-orange-600', sound: 523 },
-      { char: 'D', name: 'Duri', emoji: '🌵', color: 'bg-green-100 border-green-400 text-green-600', sound: 587 },
-      { char: 'E', name: 'Epal', emoji: '🍎', color: 'bg-rose-100 border-rose-400 text-rose-600', sound: 659 },
-      { char: 'F', name: 'Feri', emoji: '🚢', color: 'bg-purple-100 border-purple-400 text-purple-600', sound: 698 }
+  function playSuccessSound() {
+    if (!isAudioOn) return;
+    playTone(523, 0.1);
+    setTimeout(() => playTone(659, 0.1), 100);
+    setTimeout(() => playTone(784, 0.2), 200);
+  }
+
+  function playErrorSound() {
+    if (!isAudioOn) return;
+    playTone(200, 0.2, 'sawtooth');
+    setTimeout(() => playTone(150, 0.2, 'sawtooth'), 150);
+  }
+
+  function toggleAudio() {
+    isAudioOn = !isAudioOn;
+    let btn = document.getElementById('audioBtn');
+    if (isAudioOn) {
+      initAudio();
+      btn.textContent = '🔊 Muzik On';
+      playTone(440, 0.1);
+      startSpaceAmbient();
+      setRobotMessage("Muzik kosmik angkasa diaktifkan! Jom kita mula!");
+    } else {
+      btn.textContent = '🔇 Muzik Off';
+      stopSpaceAmbient();
+      setRobotMessage("Audio ditutup. Senyap di angkasa lepas.");
+    }
+  }
+
+  // Generative Space Ambient Music Generator using Web Audio API
+  function startSpaceAmbient() {
+    if (isMusicPlaying || !audioCtx) return;
+    isMusicPlaying = true;
+    
+    const chordFrequencies = [130.81, 196.00, 261.63, 329.63, 392.00, 523.25];
+    
+    function playCosmicDrone() {
+      if (!isAudioOn) return;
+      try {
+        let osc1 = audioCtx.createOscillator();
+        let osc2 = audioCtx.createOscillator();
+        let gainNode = audioCtx.createGain();
+        
+        let freq1 = chordFrequencies[Math.floor(Math.random() * chordFrequencies.length)];
+        let freq2 = freq1 * 1.5;
+        
+        osc1.type = 'sine';
+        osc2.type = 'triangle';
+        osc1.frequency.setValueAtTime(freq1, audioCtx.currentTime);
+        osc2.frequency.setValueAtTime(freq2, audioCtx.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.035, audioCtx.currentTime + 2.0);
+        gainNode.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 5.0);
+        
+        osc1.connect(gainNode);
+        osc2.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        osc1.start();
+        osc2.start();
+        osc1.stop(audioCtx.currentTime + 5.0);
+        osc2.stop(audioCtx.currentTime + 5.0);
+      } catch(e) {}
+    }
+    
+    playCosmicDrone();
+    spaceMusicInterval = setInterval(playCosmicDrone, 4000);
+  }
+
+  function stopSpaceAmbient() {
+    isMusicPlaying = false;
+    if (spaceMusicInterval) {
+      clearInterval(spaceMusicInterval);
+      spaceMusicInterval = null;
+    }
+  }
+
+  function setRobotMessage(text) {
+    lastRobotText = text;
+    const el = document.getElementById('robotSpeech');
+    if(el) el.textContent = text;
+  }
+
+  function createStarfield() {
+    const starfield = document.getElementById('starfield');
+    for (let i = 0; i < 40; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      let size = Math.random() * 3 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+      star.style.animationDelay = (Math.random() * 2) + 's';
+      starfield.appendChild(star);
+    }
+  }
+
+  const missionsData = {
+    sifir: [
+      { emoji: '🚀', title: 'Berapakah hasil darab roket ini?', math: '4 × 3 = ?', options: [10, 12, 14, 16], answer: 12, hint: 'Empat kali tiga sama dengan dua belas!' },
+      { emoji: '🌟', title: 'Kira bilangan bintang angkasa:', math: '6 × 5 = ?', options: [25, 30, 35, 20], answer: 30, hint: 'Enam darab lima ialah tiga puluh.' },
+      { emoji: '🪐', title: 'Berapakah jumlah planet bernilai 7 untuk 4 kumpulan?', math: '7 × 4 = ?', options: [24, 28, 32, 21], answer: 28, hint: 'Tujuh kali empat bersamaan dua puluh lapan.' },
+      { emoji: '🛸', title: 'Pendaratan UFO sebanyak 8 kali ke 3 pangkalan:', math: '8 × 3 = ?', options: [21, 24, 27, 18], answer: 24, hint: 'Lapan darab tiga ialah dua puluh empat.' },
+      { emoji: '👽', title: 'Berapakah tangan untuk 9 makhluk asing berserta 2 tangan?', math: '9 × 2 = ?', options: [16, 18, 20, 14], answer: 18, hint: 'Sembilan kali dua ialah lapan belas.' }
     ],
-    123: [
-      { char: '1', name: 'Satu Angsa', emoji: '🦢', color: 'bg-amber-100 border-amber-400 text-amber-700', sound: 300 },
-      { char: '2', name: 'Dua Itik', emoji: '🦆', color: 'bg-yellow-100 border-yellow-400 text-yellow-700', sound: 350 },
-      { char: '3', name: 'Tiga Kucing', emoji: '🐱', color: 'bg-emerald-100 border-emerald-400 text-emerald-700', sound: 400 },
-      { char: '4', name: 'Empat Bunga', emoji: '🌸', color: 'bg-pink-100 border-pink-400 text-pink-700', sound: 450 },
-      { char: '5', name: 'Lima Bintang', emoji: '⭐', color: 'bg-indigo-100 border-indigo-400 text-indigo-700', sound: 500 },
-      { char: '6', name: 'Enam Bola', emoji: '⚽', color: 'bg-cyan-100 border-cyan-400 text-cyan-700', sound: 550 }
+    bahagi: [
+      { emoji: '☄️', title: '12 batu meteor dibahagi kepada 3 kawah sama rata:', math: '12 ÷ 3 = ?', options: [3, 4, 5, 6], answer: 4, hint: 'Dua belas bahagi tiga dapat empat!' },
+      { emoji: '🌌', title: '20 bintang diagihkan kepada 4 angkasawan:', math: '20 ÷ 4 = ?', options: [4, 5, 6, 8], answer: 5, hint: 'Dua puluh bahagi empat ialah lima.' },
+      { emoji: '🛸', title: '18 alien masuk ke dalam 2 buah kapal:', math: '18 ÷ 2 = ?', options: [8, 9, 7, 6], answer: 9, hint: 'Lapan belas bahagi dua ialah sembilan.' },
+      { emoji: '🌕', title: '24 keping biskut bulan dibahagi kepada 6 orang:', math: '24 ÷ 6 = ?', options: [3, 4, 5, 6], answer: 4, hint: 'Dua puluh empat bahagi enam ialah empat.' },
+      { emoji: '🚀', title: '30 roket disusun dalam 5 barisan:', math: '30 ÷ 5 = ?', options: [5, 6, 7, 8], answer: 6, hint: 'Tiga puluh bahagi lima ialah enam.' }
     ],
-    warna: [
-      { char: 'Merah', name: 'Warna Merah', emoji: '🔴', color: 'bg-red-100 border-red-400 text-red-600', sound: 500 },
-      { char: 'Biru', name: 'Warna Biru', emoji: '🔵', color: 'bg-blue-100 border-blue-400 text-blue-600', sound: 550 },
-      { char: 'Hijau', name: 'Warna Hijau', emoji: '🟢', color: 'bg-emerald-100 border-emerald-400 text-emerald-600', sound: 600 },
-      { char: 'Kuning', name: 'Warna Kuning', emoji: '🟡', color: 'bg-yellow-100 border-yellow-500 text-yellow-700', sound: 650 },
-      { char: 'Jingga', name: 'Warna Jingga', emoji: '🟠', color: 'bg-orange-100 border-orange-400 text-orange-600', sound: 700 },
-      { char: 'Ungu', name: 'Warna Ungu', emoji: '🟣', color: 'bg-purple-100 border-purple-400 text-purple-600', sound: 750 }
+    pecahan: [
+      { emoji: '🍕', title: 'Pilih pecahan untuk separuh pizza angkasa:', math: '1 separuh daripada 2 bahagian = ?', options: ['1/2', '1/4', '3/4', '2/3'], answer: '1/2', hint: 'Satu perdua ditulis sebagai 1 per 2.' },
+      { emoji: '🍰', title: 'Kek dipotong kepada 4 bahagian, diambil 1 bahagian:', math: 'Pecahan bahagian diambil = ?', options: ['1/2', '1/4', '2/4', '3/4'], answer: '1/4', hint: 'Satu perempat ialah 1 per 4.' },
+      { emoji: '🟧', title: 'Tiga bahagian berlorek daripada 4 bahagian sama besar:', math: 'Namakan pecahan ini:', options: ['1/4', '2/4', '3/4', '4/4'], answer: '3/4', hint: 'Tiga perempat ditulis 3 per 4.' },
+      { emoji: '🍫', title: '2 bahagian daripada 4 bahagian coklat angkasa:', math: '2/4 adalah sama nilainya dengan:', options: ['1/2', '1/3', '3/4', '1/4'], answer: '1/2', hint: 'Dua perempat dipermudahkan jadi satu perdua.' },
+      { emoji: '🍉', title: 'Sebiji tembikai dipotong 8, diambil 4 bahagian:', math: '4/8 dipermudahkan jadi:', options: ['1/4', '1/2', '3/4', '2/3'], answer: '1/2', hint: 'Empat per lapan bersamaan separuh (1/2).' }
     ],
-    haiwan: [
-      { char: 'Meow', name: 'Kucing', emoji: '🐱', color: 'bg-amber-100 border-amber-400 text-amber-700', sound: 320 },
-      { char: 'Moo', name: 'Lembu', emoji: '🐮', color: 'bg-stone-100 border-stone-400 text-stone-700', sound: 280 },
-      { char: 'Baa', name: 'Kambing', emoji: '🐑', color: 'bg-sky-100 border-sky-400 text-sky-700', sound: 420 },
-      { char: 'Kukrik', name: 'Ayam Jantan', emoji: '🐓', color: 'bg-orange-100 border-orange-400 text-orange-700', sound: 480 },
-      { char: 'Quack', name: 'Itik', emoji: '🦆', color: 'bg-yellow-100 border-yellow-400 text-yellow-700', sound: 380 },
-      { char: 'Wok', name: 'Katak', emoji: '🐸', color: 'bg-emerald-100 border-emerald-400 text-emerald-700', sound: 340 }
+    wang: [
+      { emoji: '💰', title: 'Ali ada RM50. Beli mainan roket berharga RM32. Berapakah baki?', math: 'RM50 - RM32 = ?', options: ['RM12', 'RM18', 'RM20', 'RM15'], answer: 'RM18', hint: 'Lima puluh tolak tiga puluh dua baki lapan belas ringgit.' },
+      { emoji: '🪙', title: 'RM15.50 + RM4.20 = ?', math: 'Jumlah wang:', options: ['RM19.70', 'RM19.50', 'RM20.10', 'RM18.70'], answer: 'RM19.70', hint: 'Tambahkan ringgit dengan ringgit, sen dengan sen!' },
+      { emoji: '🚀', title: 'Harga 2 tiket kapal angkasa masing-masing RM25:', math: '2 × RM25 = ?', options: ['RM40', 'RM45', 'RM50', 'RM60'], answer: 'RM50', hint: 'Dua kali dua puluh lima ringgit ialah lima puluh ringgit.' },
+      { emoji: '🪐', title: 'Baki daripada RM100 selepas membeli buku RM65:', math: 'RM100 - RM65 = ?', options: ['RM25', 'RM30', 'RM35', 'RM40'], answer: 'RM35', hint: 'Seratus tolak enam puluh lima ialah tiga puluh lima ringgit.' },
+      { emoji: '⭐', title: 'RM10.00 - RM4.30 = ?', math: 'Kira baki:', options: ['RM5.50', 'RM5.70', 'RM6.30', 'RM4.70'], answer: 'RM5.70', hint: 'Sepuluh ringgit tolak empat ringgit tiga puluh sen.' }
     ]
   };
 
-  let currentTab = 'abc';
-
-  function switchTab(tab) {
-    currentTab = tab;
-    playTone(600, 0.08, 'triangle');
+  function startMission(missionKey) {
+    initAudio();
+    playTone(550, 0.15);
+    currentMission = missionKey;
+    currentQuestionIndex = 0;
+    currentQuestionsList = [...missionsData[missionKey]];
     
-    // Highlight active button
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      b.classList.remove('ring-4', 'ring-white', 'scale-105');
-    });
-    document.getElementById('btn-' + tab).classList.add('ring-4', 'ring-white', 'scale-105');
+    document.getElementById('menuScreen').classList.add('hidden');
+    document.getElementById('completeModal').classList.add('hidden');
+    document.getElementById('gameScreen').classList.remove('hidden');
 
-    // Load first item as default display
-    let first = data[tab][0];
-    updateDisplay(first.emoji, first.char, first.name);
-    
-    renderGrid();
+    setRobotMessage(`Wah, misi ${missionKey} bermula! Bersedia untuk menjawab soalan.`);
+    loadQuestion();
   }
 
-  function updateDisplay(emoji, title, desc) {
-    document.getElementById('bigEmoji').textContent = emoji;
-    document.getElementById('bigTitle').textContent = title;
-    document.getElementById('bigDesc').textContent = desc;
+  function returnToMenu() {
+    playTone(400, 0.1);
+    document.getElementById('gameScreen').classList.add('hidden');
+    document.getElementById('completeModal').classList.add('hidden');
+    document.getElementById('menuScreen').classList.remove('hidden');
+    setRobotMessage("Sila pilih stesen misi yang lain pula ya!");
   }
 
-  function renderGrid() {
-    let container = document.getElementById('gridContainer');
-    container.innerHTML = '';
-    
-    data[currentTab].forEach((item) => {
+  function loadQuestion() {
+    if (currentQuestionIndex >= currentQuestionsList.length) {
+      showCompletionModal();
+      return;
+    }
+
+    let q = currentQuestionsList[currentQuestionIndex];
+    document.getElementById('questionCounter').textContent = `Soalan ${currentQuestionIndex + 1}/${currentQuestionsList.length}`;
+    document.getElementById('questionEmoji').textContent = q.emoji;
+    document.getElementById('questionTitle').textContent = q.title;
+    document.getElementById('questionMath').textContent = q.math;
+    document.getElementById('feedbackBox').textContent = '';
+
+    setRobotMessage(`${q.title}. Berapakah ${q.math.replace('= ?', '')}?`);
+
+    let optionsContainer = document.getElementById('optionsContainer');
+    optionsContainer.innerHTML = '';
+
+    let shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+
+    shuffledOptions.forEach(opt => {
       let btn = document.createElement('button');
-      btn.className = `bouncy-card ${item.color} border-2 rounded-2xl p-3 flex flex-col items-center justify-center shadow-md cursor-pointer`;
-      btn.innerHTML = `<span class="text-3xl">${item.emoji}</span><span class="font-bold text-sm mt-1">${item.char}</span>`;
-      btn.onclick = () => {
-        playTone(item.sound, 0.2, 'sine');
-        updateDisplay(item.emoji, item.char, item.name);
-      };
-      container.appendChild(btn);
+      btn.className = 'bg-indigo-900/80 hover:bg-indigo-800 border-2 border-indigo-500/50 hover:border-yellow-400 text-white font-bold py-3.5 px-4 rounded-2xl shadow-md bouncy-btn text-lg transition';
+      btn.textContent = opt;
+      btn.onclick = () => checkAnswer(opt, q.answer);
+      optionsContainer.appendChild(btn);
     });
   }
 
-  // Initialize first view on load
+  function checkAnswer(selected, correct) {
+    let feedbackBox = document.getElementById('feedbackBox');
+    
+    if (selected.toString() === correct.toString()) {
+      playSuccessSound();
+      score += 10;
+      document.getElementById('scoreDisplay').textContent = score;
+      feedbackBox.textContent = '🎉 Betul! Hebat sekali!';
+      feedbackBox.className = 'text-center font-bold text-sm h-8 mt-2 text-green-300';
+      setRobotMessage("Bip bop! Jawapan tepat! Tahniah kawan angkasa!");
+
+      setTimeout(() => {
+        currentQuestionIndex++;
+        loadQuestion();
+      }, 1200);
+    } else {
+      playErrorSound();
+      feedbackBox.textContent = '❌ Cuba lagi! ' + currentQuestionsList[currentQuestionIndex].hint;
+      feedbackBox.className = 'text-center font-bold text-sm h-8 mt-2 text-pink-300';
+      setRobotMessage("Cubaan lain diperlukan. " + currentQuestionsList[currentQuestionIndex].hint);
+    }
+  }
+
+  function showCompletionModal() {
+    playSuccessSound();
+    document.getElementById('gameScreen').classList.add('hidden');
+    document.getElementById('completeModal').classList.remove('hidden');
+    document.getElementById('completeMessage').textContent = `Tahniah! Awak berjaya menyelesaikan Misi ${currentMission} dengan cemerlang dan mengumpul markah terkumpul ${score} bintang!`;
+    setRobotMessage(`Misi selesai dengan cemerlang! Keputusan hebat!`);
+  }
+
   window.onload = () => {
-    switchTab('abc');
+    createStarfield();
   };
 </script>
-
-</body>
-</html>
