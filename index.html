@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Misi Angkasa Matematik - Darjah 3 (9 Tahun)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+<meta property="og:title" content="Misi Angkasa Matematik - Darjah 3 (9 Tahun)">
+<meta property="og:description" content="Jom teroka angkasa sambil belajar Sifir, Bahagi, Pecahan & Wang bersama Robo-Bot!">
+<meta property="og:type" content="website">
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -397,43 +402,4 @@
       let btn = document.createElement('button');
       btn.className = 'bg-indigo-900/80 hover:bg-indigo-800 border-2 border-indigo-500/50 hover:border-yellow-400 text-white font-bold py-3.5 px-4 rounded-2xl shadow-md bouncy-btn text-lg transition';
       btn.textContent = opt;
-      btn.onclick = () => checkAnswer(opt, q.answer);
-      optionsContainer.appendChild(btn);
-    });
-  }
-
-  function checkAnswer(selected, correct) {
-    let feedbackBox = document.getElementById('feedbackBox');
-    
-    if (selected.toString() === correct.toString()) {
-      playSuccessSound();
-      score += 10;
-      document.getElementById('scoreDisplay').textContent = score;
-      feedbackBox.textContent = '🎉 Betul! Hebat sekali!';
-      feedbackBox.className = 'text-center font-bold text-sm h-8 mt-2 text-green-300';
-      setRobotMessage("Bip bop! Jawapan tepat! Tahniah kawan angkasa!");
-
-      setTimeout(() => {
-        currentQuestionIndex++;
-        loadQuestion();
-      }, 1200);
-    } else {
-      playErrorSound();
-      feedbackBox.textContent = '❌ Cuba lagi! ' + currentQuestionsList[currentQuestionIndex].hint;
-      feedbackBox.className = 'text-center font-bold text-sm h-8 mt-2 text-pink-300';
-      setRobotMessage("Cubaan lain diperlukan. " + currentQuestionsList[currentQuestionIndex].hint);
-    }
-  }
-
-  function showCompletionModal() {
-    playSuccessSound();
-    document.getElementById('gameScreen').classList.add('hidden');
-    document.getElementById('completeModal').classList.remove('hidden');
-    document.getElementById('completeMessage').textContent = `Tahniah! Awak berjaya menyelesaikan Misi ${currentMission} dengan cemerlang dan mengumpul markah terkumpul ${score} bintang!`;
-    setRobotMessage(`Misi selesai dengan cemerlang! Keputusan hebat!`);
-  }
-
-  window.onload = () => {
-    createStarfield();
-  };
-</script>
+  
